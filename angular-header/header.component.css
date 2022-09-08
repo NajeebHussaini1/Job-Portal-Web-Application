@@ -1,0 +1,15 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  h1{
+    text-align: center;
+  }
+
+  .home img
+  {
+    width:100%;
+    height:600px;
+    object-position: center;
+    object-fit: cover;
+
+  }

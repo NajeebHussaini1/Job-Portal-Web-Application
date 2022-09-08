@@ -1,0 +1,20 @@
+<h2>Please Login below as specified Role</h2>
+
+<button mat-raised-button color='primary' (click)="employerLogin()">Employer</button>
+<button mat-raised-button color='primary' (click)="adminLogin()">Admin</button>
+<button mat-raised-button color='primary' (click)="jobseekerLogin()">JobSeeker</button>
+
+
+<div *ngIf="employer; then showEmployer"></div>
+<ng-template #showEmployer>
+    <employerlogin></employerlogin>
+</ng-template>
+<div *ngIf="admin; then showAdmin"></div>
+<ng-template #showAdmin>
+    <adminlogin></adminlogin>
+</ng-template>
+<div *ngIf="jobSeeker; then showJobSeeker"></div>
+<ng-template #showJobSeeker>
+    <jobseekerlogin></jobseekerlogin>
+</ng-template>
+<br/>
