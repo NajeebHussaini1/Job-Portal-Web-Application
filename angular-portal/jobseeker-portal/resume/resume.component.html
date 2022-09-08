@@ -1,0 +1,159 @@
+<br/>
+<div class="row">
+    <p>Personal Information </p>
+    <form [formGroup] = 'myform'>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>First Name: </mat-label>
+            <input matInput type="text" formControlName = 'firstName'/> 
+            <mat-error *ngIf='firstName.invalid' >
+                First Name can not be blank
+            </mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Last Name: </mat-label>
+            <input matInput type="text" formControlName = 'lastName'/> 
+            <mat-error *ngIf='lastName.invalid' >
+                Last Name can not be blank
+            </mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>User Name: </mat-label>
+            <input matInput type="text" formControlName='userName'/>
+            <mat-error *ngIf='userName.invalid'>
+                User Name can not be blank
+            </mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Phone Number: </mat-label>
+            <input matInput type="text" formControlName='primaryNumber'/>
+        </mat-form-field>
+        <br/>
+        <br/>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Email: </mat-label>
+            <input matInput type="email" formControlName='email'/>
+            <mat-error *ngIf='email.invalid'>
+                Email can not be blank
+            </mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Address Line1: </mat-label>
+            <input matInput type="text" formControlName = 'addressLine1'/> 
+            <mat-error *ngIf='addressLine1.invalid' >
+                Address can not be blank
+            </mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Address Line2: </mat-label>
+            <input matInput type="text" formControlName = 'addressLine2'/> 
+            <mat-error *ngIf='addressLine2.invalid' >
+                Address can not be blank
+            </mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Country: </mat-label>
+            <input matInput type="text" formControlName='country'/>
+            <mat-error *ngIf='country.invalid'>
+                Country can not be blank
+            </mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>State: </mat-label>
+            <input matInput type="text" formControlName='state'/>
+            <mat-error *ngIf='state.invalid'>
+                State can not be blank
+            </mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>City</mat-label>
+            <input matInput type="text" formControlName='city'/>
+            <mat-error *ngIf='city.invalid'>
+                city can not be blank
+            </mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Highest Level of Education</mat-label>
+            <input matInput type="text" formControlName='highestLevelOfEducation'/>
+            <mat-error *ngIf='highestLevelOfEducation.invalid'>
+                Education can not be blank
+            </mat-error>
+        </mat-form-field>
+        <br/>
+        <br/>
+        <div formArrayName = "expform" *ngFor="let exp of myform.get('expform') ['controls']; index as i">
+            <div [formGroupName]=i>
+                <br/>
+                <p>Experiences:</p>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Start Date</mat-label>
+                    <input matInput type="text" formControlName='startDate'/>
+                </mat-form-field>
+                <br/>
+
+                <br/>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>End date</mat-label>
+                    <input matInput type="text" formControlName='endDate'/>
+                </mat-form-field>
+                <br/>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Technology </mat-label>
+                    <input matInput type="text" formControlName = 'technologies'/> 
+                    
+                </mat-form-field>
+                <br/>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Firm Name: </mat-label>
+                    <input matInput type="text" formControlName = 'firmName'/> 
+                    
+                </mat-form-field>
+                <br/>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Designation: </mat-label>
+                    <input matInput type="text" formControlName = 'designation'/> 
+                    
+                </mat-form-field>
+                <br/>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Years Of Experience: </mat-label>
+                    <input matInput type="text" formControlName = 'yearsOfExperience'/> 
+                    
+                </mat-form-field>
+                <br/>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Description: </mat-label>
+                    <input matInput type="text" formControlName = 'description'/> 
+                    
+                </mat-form-field>
+                </div>
+
+            </div>
+            <!---
+            <div class="example-button-container">
+                <button mat-mini-fab color="primary" aria-label="Example icon button with a menu icon">
+                  <mat-icon>plus_one</mat-icon>
+                </button>
+              </div>-->
+           <button mat-raised-button color='primary' (click)="addExperienceDetails()">Add Experience</button>
+<br/>
+      <br/>
+        <button mat-raised-button color='primary' value="bold" (click) = "onSubmit()" >Submit</button>
+    </form>
+    <br/>
+    <div class="alert" *ngIf ="isFormSubmitted" >
+        {{message}}
+    </div>
+
+</div>
+
+
+

@@ -1,0 +1,57 @@
+<div class="container mt-3">
+
+    <!-- <app-job-detail hidden = "true" (appliedJob)="getApplicants()"></app-job-detail> -->
+    
+   
+    <div class="table-responsive">
+      <table class="table">
+       <thead class="bg-info">
+                <tr>
+                    <th *ngFor="let key of headers">{{key}}</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+               <tr *ngFor="let a of map | keyvalue" >
+                    <td><mat-checkbox class="example-margin" ></mat-checkbox></td>
+                    <td>{{a.key.email}}</td>
+                    <td>
+                        <li>
+                            First Name: {{a.value.firstName}}
+                        </li>
+                        <li>
+                            Last Name: {{a.value.lastName}}
+                        </li>
+                        <li>
+                            Number: {{a.value.primaryNumber}}
+                        </li>
+                        <li>
+                            Address: {{a.value.addressLine1}} , {{a.value.city}}, {{a.value.state}}, {{a.value.country}}
+                        </li>                                         
+                        <li>
+                            Level Of Education: {{a.value.highestLevelOfEducation}}
+                        </li>
+                        Experience:
+                        <div *ngFor="let exp of a.value.experiences">                 
+                            <li>Start Date: {{exp.startDate}}</li>
+                            <li>End Date: {{exp.endDate}}</li>
+                            <li>Technologies: {{exp.technologies}}</li>
+                            <li>Firm Name: {{exp.firmName}}</li>
+                            <li>Designation: {{exp.designation}}</li>
+                            <li>Years of Experience: {{exp.yearsOfExperience}}</li>
+                            <li>Description: {{exp.description}}</li>
+                        </div>
+                    </td>
+                     <td>
+                         <button class="btn btn-success" style="width:100%;height:auto;border-radius: 45px;"
+                            (click)="onSubmit(a.value.resumeId)" [disabled] = "shortlisted">ShortList</button>
+                        
+                    </td> 
+                    
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>

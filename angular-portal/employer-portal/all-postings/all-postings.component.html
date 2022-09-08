@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="col-xs-12" *ngIf="jobs.length > 0; then show"> </div>
+</div>
+    
+<ng-template #show>
+    <ul class="list-group" *ngFor = 'let job of jobs'>
+        <app-all-job-item [job]="job" (click)="onSelected(job);"></app-all-job-item>
+    </ul>
+</ng-template>

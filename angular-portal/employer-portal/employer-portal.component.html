@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-xs-12">
+        <a mat-raised-button color="primary" (click)="myPostsSelected();">My Posting</a>
+        <a mat-raised-button color="primary" (click)="allPostsSelected();">All Posting</a>
+    </div>
+    <div *ngIf="myPosts; then showMyPosts"></div>
+    <div *ngIf="allPosts; then showAllPosts"></div>
+    <ng-template #showMyPosts>
+        <div class="col-md-5">
+            <app-employers-postings (job)="job = $event"></app-employers-postings>
+        </div>
+
+        <div class="col-md-7">
+            <app-job-detail [job]="job"></app-job-detail>
+        </div>
+    </ng-template>
+    <ng-template #showAllPosts>
+        <div class="col-md-5">
+            <app-all-postings (job)="job = $event"></app-all-postings>
+        </div>
+        <div class="col-md-7">
+            <app-all-job-detail [job]="job"></app-all-job-detail>
+        </div>
+    </ng-template>
+</div>
+
+
+
+

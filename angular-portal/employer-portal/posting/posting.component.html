@@ -1,0 +1,68 @@
+<h2>POSTINGS</h2>
+<div class = "container">
+    <p>Add your new job posting HERE: </p>
+    <form (ngSubmit) = "onSubmit()" [formGroup] = 'myform'>
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Title: </mat-label>
+            <input matInput type="text" formControlName = 'jobTitle'/> 
+            <mat-error *ngIf='jobTitle.invalid' >
+                Job Title can not be blank
+            </mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field appearance="fill">
+            <mat-label>Type</mat-label>
+            <mat-select formControlName = 'jobType'>
+              <mat-option *ngFor="let t of types" [value]="t">
+                {{t}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf='jobType.invalid' >
+                Job Type can not be blank
+            </mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field appearance="fill">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName = 'jobCategory'>
+              <mat-option *ngFor="let c of categories" [value]="c">
+                {{c}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf='jobCategory.invalid' >
+                Job Type can not be blank
+            </mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 500px;">
+            <mat-label>Job Description</mat-label>
+            <textarea matInput placeholder="Ex. This job entitles..." formControlName = 'jobDiscription'></textarea>
+            <mat-error *ngIf='jobDiscription.invalid' >
+                Job Discription can not be blank
+            </mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 500px;">
+            <mat-label>Required Skills</mat-label>
+            <textarea matInput placeholder="Ex. This job entitles..." formControlName = 'requiredSkills'></textarea>
+            <mat-error *ngIf='requiredSkills.invalid' >
+                Required Skills can not be blank
+            </mat-error>
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="example-full-width" appearance="fill" style="width: 500px;">
+            <mat-label>Required Experience</mat-label>
+            <textarea matInput placeholder="Ex. Two years of working experience..." formControlName = 'requiredExperience'></textarea>
+        </mat-form-field>
+        <br/>
+        
+        <button mat-raised-button color='warn' [disabled] = 'myform.invalid'>Register</button>
+    </form>
+    <br/>
+    <!-- <div class="alert" *ngIf ="isFormSubmitted" >
+        {{message}}
+    </div> -->
+
+</div>
+
+

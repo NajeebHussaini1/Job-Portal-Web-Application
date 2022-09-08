@@ -1,0 +1,26 @@
+<h2>Please Register below as specified Role</h2>
+
+<button mat-raised-button color='primary' (click)="employerRegister()">Employer</button>
+<button mat-raised-button color='primary' (click)="adminRegister()">Admin</button>
+<button mat-raised-button color='primary' (click)="jobseekerRegister()">JobSeeker</button>
+
+
+<div *ngIf="employer; then showEmployer"></div>
+<ng-template #showEmployer>
+    <employerregister></employerregister>
+</ng-template>
+<div *ngIf="admin; then showAdmin"></div>
+<ng-template #showAdmin>
+    <adminregister></adminregister>
+</ng-template>
+<div *ngIf="jobSeeker; then showJobSeeker"></div>
+<ng-template #showJobSeeker>
+    <jobseekerregister></jobseekerregister>
+</ng-template>
+<br/>
+
+
+
+
+
+

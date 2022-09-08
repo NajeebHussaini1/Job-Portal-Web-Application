@@ -1,0 +1,281 @@
+<br/>
+    <div *ngIf="employerLogin; then showEmployer"></div>
+    <ng-template #showEmployer>
+        <div class="container">
+            <div class="main-body">
+            
+                  <!-- Breadcrumb -->
+                  <nav aria-label="breadcrumb" class="main-breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a routerLink="home">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                    </ol>
+                  </nav>
+                  <!-- /Breadcrumb -->
+            
+                  <div class="row gutters-sm">
+                    <div class="col-md-4 mb-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://www.seekpng.com/png/detail/115-1150456_avatar-generic-avatar.png" alt="Employer" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                              <h4>{{companyName}}</h4>
+                              <p class="text-secondary mb-1">{{employerRole}}</p>              
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card mb-3">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Company Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{companyName}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary" *ngIf="!edit">
+                              {{email}}
+                            </div>                         
+                            <div class="col-sm-9 text-secondary" *ngIf="edit">
+                                <form (ngSubmit) = "updateEmail()" [formGroup] = 'myform'>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Email</mat-label>
+                                        <input matInput type="email" formControlName = 'email'/> 
+                                        <mat-error *ngIf='email.invalid' >
+                                            Email can not be blank
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <button mat-raised-button color='warn' [disabled] = 'myform.invalid'>Update</button>
+                                </form>
+                            </div>
+                          </div>
+                          <hr>                       
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Category</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{category}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">About</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{about}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-12">
+                              <a mat-raised-button color='warn' target="__blank" (click)="changeEmail()" *ngIf="!edit">Edit</a>
+                              <a mat-raised-button color='warn' target="__blank" (click)="changeEmail()" *ngIf="edit">Cancel</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>  
+                    </div>
+                  </div>
+        
+                </div>
+            </div>
+    </ng-template>
+    <div *ngIf="jobSeekerLogin; then showJobSeeker"></div>
+    <ng-template #showJobSeeker>
+        <div class="container">
+            <div class="main-body">
+            
+                  <!-- Breadcrumb -->
+                  <nav aria-label="breadcrumb" class="main-breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a routerLink="home">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                    </ol>
+                  </nav>
+                  <!-- /Breadcrumb -->
+            
+                  <div class="row gutters-sm">
+                    <div class="col-md-4 mb-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://www.seekpng.com/png/detail/115-1150456_avatar-generic-avatar.png" alt="JobSeeker" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                              <h4>{{firstName}} {{lastName}}</h4>
+                              <p class="text-secondary mb-1">{{jobSeekerRole}}</p>
+                              <p class="text-muted font-size-sm" >{{city}}, {{province}}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card mb-3">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Full Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                            {{firstName}} {{lastName}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary" *ngIf="!edit">
+                              {{email}}
+                            </div>                         
+                            <div class="col-sm-9 text-secondary" *ngIf="edit">
+                                <form (ngSubmit) = "updateEmail()" [formGroup] = 'myform'>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Email</mat-label>
+                                        <input matInput type="email" formControlName = 'email'/> 
+                                        <mat-error *ngIf='email.invalid' >
+                                            Email can not be blank
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <button mat-raised-button color='warn' [disabled] = 'myform.invalid'>Update</button>
+                                </form>
+                            </div>
+                          </div>
+                          <hr>                       
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">User Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{userName}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Phone</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{phoneNumber}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Gender</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{gender}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Address</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                              {{city}} , {{province}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-12">
+                                <a mat-raised-button color='warn' target="__blank" (click)="changeEmail()" *ngIf="!edit">Edit</a>
+                                <a mat-raised-button color='warn' target="__blank" (click)="changeEmail()" *ngIf="edit">Cancel</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>  
+                    </div>
+                  </div>
+                </div>
+            </div>
+    </ng-template>
+    <br/>
+    <div *ngIf="adminLogin; then showAdmin"></div>
+    <ng-template #showAdmin>
+        <div class="container">
+            <div class="main-body">
+            
+                  <!-- Breadcrumb -->
+                  <nav aria-label="breadcrumb" class="main-breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a routerLink="home">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+                    </ol>
+                  </nav>
+                  <!-- /Breadcrumb -->
+            
+                  <div class="row gutters-sm">
+                    <div class="col-md-4 mb-3">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://www.seekpng.com/png/detail/115-1150456_avatar-generic-avatar.png" alt="Admin" class="rounded-circle" width="150">
+                            <div class="mt-3">
+                              <h4>{{firstName}} {{lastName}}</h4>
+                              <p class="text-secondary mb-1">{{adminRole}}</p>                         
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card mb-3">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Full Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                            {{firstName}} {{lastName}}
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary" *ngIf="!edit">
+                              {{email}}
+                            </div>                         
+                            <div class="col-sm-9 text-secondary" *ngIf="edit">
+                                <form (ngSubmit) = "updateEmail()" [formGroup] = 'myform'>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Email</mat-label>
+                                        <input matInput type="email" formControlName = 'email'/> 
+                                        <mat-error *ngIf='email.invalid' >
+                                            Email can not be blank
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <button mat-raised-button color='warn' [disabled] = 'myform.invalid'>Update</button>
+                                </form>
+                            </div>
+                          </div>
+                          <hr>                                                                                                               
+                          <div class="row">
+                            <div class="col-sm-12">
+                                <a mat-raised-button color='warn' target="__blank" (click)="changeEmail()" *ngIf="!edit">Edit</a>
+                                <a mat-raised-button color='warn' target="__blank" (click)="changeEmail()" *ngIf="edit">Cancel</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>  
+                    </div>
+                  </div>
+                </div>
+            </div>
+    </ng-template>
+<br/>

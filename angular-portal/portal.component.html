@@ -1,0 +1,30 @@
+<br/>
+
+<div *ngIf="employerView; then showEmployer"></div>
+<ng-template #showEmployer>
+    <br/>
+    <div>
+        <app-employer-portal></app-employer-portal>
+    </div>
+</ng-template>
+<div *ngIf="jobSeekerView; then showJobSeeker"></div>
+<ng-template #showJobSeeker>
+    <br/>
+   <app-jobseeker-portal></app-jobseeker-portal>
+</ng-template>
+<br/>
+<div *ngIf="adminView; then showAdmin"></div>
+<ng-template #showAdmin>
+    <br/>
+   <app-admin-portal></app-admin-portal>
+</ng-template>
+<br/>
+
+
+
+
+
+
+
+
+

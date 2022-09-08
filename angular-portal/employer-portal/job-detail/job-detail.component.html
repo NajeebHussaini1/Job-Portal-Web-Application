@@ -1,0 +1,39 @@
+<div #stickyMenu [class.sticky] = "sticky">
+    <div *ngIf="!updateView; then showCard"></div>
+    <ng-template #showCard>
+        <div class="row" >
+            <div class="col-xs-12">
+                <h1>{{job?.jobTitle}}</h1>
+            </div>
+            <div class="col-xs-12">
+                <button mat-raised-button color="primary" (click)="goToApplicants(job);">Applicants</button>
+                <button mat-raised-button color="accent" (click)="updateJob(job);">Edit</button>
+                <button mat-raised-button color="warn" (click)="deleteJob(job);">Delete</button>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-xs-12">
+                <p>{{job?.jobDiscription}}</p>
+                <p>{{job?.jobCategory}}</p>
+                <p>{{job?.jobType}}</p>
+                <p>{{job?.requiredExperience}}</p>
+                <p>{{job?.requiredSkills}}</p>
+            </div>
+        </div>
+    </ng-template>
+    
+
+    <div *ngIf="updateView && !canceled; then showUpdateView"></div>
+    <ng-template #showUpdateView>
+        <br/>
+        <div>
+            <app-update-job [updatedJob]="job" (canceled)="onCancelClick($event)"></app-update-job>
+        </div>
+    </ng-template>
+
+    <div *ngIf = "applicantView">
+        <app-applicants [appliedJob]="job"></app-applicants>
+    </div>
+
+    
